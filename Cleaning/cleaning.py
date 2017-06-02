@@ -3,14 +3,10 @@ import os
 import pandas as pd
 import numpy as np
 
-# TODO: Update to github link later
-# url = 'https://raw.githubusercontent.com/gongos/ESOMAR-Summer-Academy/master'
-# df = pd.read_csv(url + '/DataCleaning/data.csv')
-
-os.chdir('P:/Marketing_PR/Conferences/Gongos Enterprise/ESOMAR/ESOMAR Summer Academy 2017_Amsterdam/Workshop')
+url = 'https://raw.githubusercontent.com/gongos/ESOMAR-Summer-Academy/master'
 
 # Read in data to a pandas dataframe
-df = pd.read_csv('Data/movie_metadata.csv')
+df = pd.read_csv(url + '/Data/movie_metadata.csv')
 
 # Using the dir function we can look at more details about python objects
 # This gives us access to possible methods to access and manipulate information
