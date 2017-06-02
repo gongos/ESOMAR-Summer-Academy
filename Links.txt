@@ -1,0 +1,17 @@
+Gongos GitHub: https://github.com/gongos
+
+Visualizations
+	Years Left to Live: http://flowingdata.com/2015/09/23/years-you-have-left-to-live-probably/
+	Older/Younger than You: http://flowingdata.com/2016/05/10/who-is-older-and-younger-than-you/
+	Seeing Theory: http://students.brown.edu/seeing-theory/
+
+Reddit: www.reddit.com
+Stack Overflow: www.stackoverflow.com
+GitHub: http://github.com/
+R-Bloggers: www.r-bloggers.com
+Stat Methods: http://www.statmethods.net/
+
+Interactive Visualizations @ The Pudding: https://pudding.cool/
+
+
+http://flowingdata.com/2016/12/29/best-data-visualization-projects-of-2016/
