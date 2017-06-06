@@ -5,11 +5,12 @@
 library(Hmisc)
 
 # Let's build a linear model
-# look to see if the number of facebook likes for the movie and principal actors impacts sales
+# Look to see if the number of facebook likes for the movie and principal actors impacts sales
 describe(df$gross)
 # There is some missing data - we'll have to remove it to build a model
 
 mod.df = df[!is.na(df[,'gross']),]
+nrow(df)
 5043-4159
 
 # Look at the variables we want to use in the model
@@ -65,6 +66,8 @@ summary(model)
 # Clean data to only rows with facebook likes
 cluster.df = df[!is.na(df[,'movie_facebook_likes']),]
 cluster.df = cluster.df[!is.na(cluster.df[,'actor_1_facebook_likes']),]
+
+# Let's check that we removed the correct number of rows
 
 # Build a 'base' to cluster on
 base = data.frame(cluster.df$actor_1_facebook_likes,cluster.df$movie_facebook_likes)

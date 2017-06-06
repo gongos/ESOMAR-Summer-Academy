@@ -1,17 +1,17 @@
 ## ESOMAR EDA
-## Updated: 050917
 
-# can click the Run button above or CTRL+ENTER to run a line of code
-# highlight multiple lines at once to run them together
-
+# Can click the Run button above or CTRL+ENTER to run a line of code
+# Highlight multiple lines at once to run them together
 
 
-# read in the data and save it as a data frame
-# NOTE: removed data.frame around this
-df <- read.csv("P:/Marketing_PR/Conferences/Gongos Enterprise/ESOMAR/ESOMAR Summer Academy 2017_Amsterdam/Materials/Data/movie_metadata.csv")
-df = read.csv("P:/Marketing_PR/Conferences/Gongos Enterprise/ESOMAR/ESOMAR Summer Academy 2017_Amsterdam/Materials/Data/movie_metadata.csv")
 
-# you can read files from urls, filepaths, or uploading them to the RStudio environment
+# Read in the data and save it
+# You'll need to update the file path below - locate the data on your computer and insert the path
+# Copying in the file path with have '\' - these need to be replaced with \\ or / in order to work
+df <- read.csv("C:/Users/cgilbert/Desktop/movie_metadata.csv")
+df = read.csv("C:/Users/cgilbert/Desktop/movie_metadata.csv")
+
+# You can read files from urls, filepaths, or uploading them to the RStudio environment
 
 # Look at the data
 df
@@ -21,22 +21,24 @@ df
 head(df)
 tail(df)
 
-# check the number of rows and columns
+# Check the number of rows and columns
 nrow(df)
 ncol(df)
 
 # Pull a list of those columns
 colnames(df)
 
-# install and load a library to investigate variables - you only need to install the first time you use a library
-# after that, you only need to load it each time you use it - libraries are usually installed at the top of a file
+# Install and load a library to investigate variables - you only need to install the first time you use a library
+# After that, you only need to load it each time you use it - libraries are usually installed at the top of a file
 install.packages("dplyr")
-install.package('psych')
+install.packages('psych')
+install.packages('Hmisc')
 
 library(dplyr)
 library(psych)
+library(Hmisc)
 
-# to look at a specific variable in the file, use $ after the data frame name to call it
+# To look at a specific variable in the file, use $ after the data frame name to call it
 df$genres
 
 # Can also index using square brackets [rows, columns]
@@ -45,22 +47,22 @@ df[1:10, 'genres']
 
 describe(df$genres)
 
-# to look at all vars at once
+# To look at all vars at once
 describe(df)
 
-# look at the range of years
+# Look at the range of years
 range(df$title_year)
-# it says NA to NA
+# It says NA to NA
 
-# to find help when using a function
+# To find help when using a function
 ?range()
 
-# documentation says default doesn't remove the NAs
-# to limit the range to fields with values, include na.rm=TRUE (remove the NAs)
+# Documentation says default doesn't remove the NAs
+# To limit the range to fields with values, include na.rm=TRUE (remove the NAs)
 range(df$title_year, na.rm=TRUE)
 
 # Create a variable that groups movie facebook likes into categories
-# look at how they are distributed
+# Look at how they are distributed
 summary(df$movie_facebook_likes)
 boxplot(df$movie_facebook_likes)
 
@@ -70,18 +72,18 @@ boxplot(df$movie_facebook_likes)
 # 2: mid
 # 3: high
 
-# adding it to the df using $ notation
-# if else, checks for the condition, does the first thing if statement is true, second if not
+# Adding it to the df using $ notation
+# If else, checks for the condition, does the first thing if statement is true, second if not
 df$grouped_movie_fb_likes = NA
 df$grouped_movie_fb_likes = ifelse(df$movie_facebook_likes==0,0,df$grouped_movie_fb_likes)
 df$grouped_movie_fb_likes = ifelse(df$movie_facebook_likes<=166 & df$movie_facebook_likes>0,1,df$grouped_movie_fb_likes)
 df$grouped_movie_fb_likes = ifelse(df$movie_facebook_likes>166 & df$movie_facebook_likes<=3000,2,df$grouped_movie_fb_likes)
 df$grouped_movie_fb_likes = ifelse(df$movie_facebook_likes>3000,3,df$grouped_movie_fb_likes)
 
-# look at the counts for each category
+# Look at the counts for each category
 table(df$grouped_movie_fb_likes)
 
-# we can recode these to high, medium, low, and none (row, column notation)
+# We can recode these to high, medium, low, and none (row, column notation)
 df[df[,"grouped_movie_fb_likes"]==0, "grouped_movie_fb_likes_cat"] = "none"
 df[df[,"grouped_movie_fb_likes"]==1, "grouped_movie_fb_likes_cat"] = "low"
 df[df[,"grouped_movie_fb_likes"]==2, "grouped_movie_fb_likes_cat"] = "mid"
